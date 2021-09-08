@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _USER_HPP_
+#define _USER_HPP_
 
 #include <iostream>
 #include <string>
@@ -16,54 +17,22 @@ private:
 	
 public:
 	// Get Functions
-	std::string getPaswd() {
-		return password;
-	}
-	std::string getUsrnm() {
-		return username;
-	}
-	std::string getSurnm() {
-		return surname;
-	}
-	std::string getName() {
-		return name;
-	}
-	std::string getBirth() {
-		return birth.getDate();
-	}
+	std::string getPaswd();
+	std::string getUsrnm();
+	std::string getSurnm();
+	std::string getName();
+	std::string getBirth();
 	
 	// Set Functions
-	void setPaswd(std::string p) {
-		this->password = p;
-	}
-	void setUsrnm(std::string u) {
-		this->username = u;
-	}
-	void setName(std::string n) {
-		this->name = n;
-	}
-	void setSname(std::string sn) {
-		this->surname = sn;	
-	}
-	void setBirth(std::string b) {
-		this->birth.setDate(b);
-	}
+	void setPaswd(std::string);
+	void setUsrnm(std::string);
+	void setName(std::string);
+	void setSname(std::string);
+	void setBirth(std::string);
 
 	// Friend Functions
-	friend std::ostream& operator<<(std::ostream& out, const User& temp) {
-		out << "name\t\t" << temp.name
-		    << "surname\t" << temp.surname
-		    << "birth\t\t" << temp.birth
-		    << "username\t" << temp.username
-		    << "password\t" << temp.password;
-		return out;
-	}
-	friend std::istream& operator>>(std::istream& in, User& temp) {
-		std::cout << "name:\t\t"; in >> temp.name;
-		std::cout << "surname:\t"; in >> temp.surname;
-		std::cout << "birth:\t\t"; in >> temp.birth;
-		std::cout << "username:\t"; in >> temp.username;
-		std::cout << "password:\t"; in >> temp.password;
-		return in;
-	}
+	friend std::ostream& operator<<(std::ostream&, const User&);
+	friend std::istream& operator>>(std::istream&, User&);
 };
+
+#endif

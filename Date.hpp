@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _DATE_HPP_
+#define _DATE_HPP_
 
 #include <iostream>
 #include <cstring>
@@ -18,25 +19,12 @@ public:
 	{}
 	
 	// Set/Get Functions
-	std::string getDate() const
-	{
-		return std::to_string(day) + '/' + std::to_string(month) + '/' + std::to_string(year);
-	}
-	void setDate(std::string date) {
-		char d[date.length() + 1];
-		strcpy(d, date.c_str());
-		day = std::stoi(strtok(d, "/"));
-		month = std::stoi(strtok(NULL, "/"));
-		year = std::stoi(strtok(NULL, "/"));
-	}
-	
+	std::string getDate() const;
+	void setDate(std::string);
+
 	// Friend Functions
-	friend std::ostream& operator<<(std::ostream& out, const Date& temp) {
-		out << temp.day << "/" << temp.month << "/" << temp.year << "\n";
-		return out;
-	}
-	friend std::istream& operator>>(std::istream& in, Date& temp) {
-		in >> temp.day >> temp.month >> temp.year;
-		return in;
-	}
+	friend std::ostream& operator<<(std::ostream&, const Date&);
+	friend std::istream& operator>>(std::istream&, Date&);
 };
+
+#endif
